@@ -1,14 +1,13 @@
 ARG PY_VERSION=3.13
 FROM python:${PY_VERSION}-slim
-WORKDIR data/
+WORKDIR /data/
 ENV PYTHONUNBUFFERED=1
 
 COPY api/ api/
 COPY lists/ lists/
 COPY todolist/ todolist/
 COPY accounts/ accounts/
-COPY .pre-commit-config.yaml/ .travis.yml/ manage.py/ \
-README.md/ requirements.txt/ ./
+COPY .pre-commit-config.yaml/ .travis.yml/ manage.py/ README.md/ requirements.txt/ ./
 
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt && \
